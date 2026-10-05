@@ -239,8 +239,8 @@ p {
         );
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity .45s ease,
+        transform .45s ease;
 }
 
 
@@ -296,12 +296,6 @@ p {
     box-shadow:
         0 8px 25px
         rgba(0, 0, 0, .25);
-
-    /*
-       ВАЖНО:
-       письмо полностью спрятано
-       до нажатия
-    */
 
     transform:
         translateY(105px);
@@ -432,8 +426,7 @@ p {
     opacity: 0;
 
     transform:
-        translateY(-40px)
-        scale(.92);
+        scale(.82);
 
     pointer-events: none;
 }
@@ -848,11 +841,6 @@ button:hover {
     <div class="card">
 
         <div class="letter-area">
-
-            <!--
-                Нажатие непосредственно
-                на конверт
-            -->
 
             <div
                 class="envelope"
@@ -1393,6 +1381,7 @@ function openLetter() {
         return;
     }
 
+    letterOpened = true;
 
     const envelope =
         document.getElementById("envelope");
@@ -1403,38 +1392,23 @@ function openLetter() {
     }
 
 
-    letterOpened = true;
-
-
     /*
-       Открываем конверт
+       Конверт сразу исчезает
     */
 
-    envelope.classList.add("open");
+    envelope.classList.add("hide");
 
 
     /*
-       Через 2.7 секунды
-       начинаем исчезновение
-    */
-
-    setTimeout(function() {
-
-        envelope.classList.add("hide");
-
-    }, 2700);
-
-
-    /*
-       Через 3.7 секунды
-       переходим дальше
+       Через 0.6 секунды
+       открываем слайд с приглашением
     */
 
     setTimeout(function() {
 
         nextSlide(2);
 
-    }, 3700);
+    }, 600);
 
 }
 
